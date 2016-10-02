@@ -1,0 +1,38 @@
+int num;
+
+		if (r == Rank.WILD || r == Rank.WILD_D4) {
+			for (int i = 0; i < hand.size(); i++) {
+				if (hand.get(i).getColor() == calledColor
+						|| hand.get(i).getRank() == Rank.WILD
+						|| hand.get(i).getRank() == Rank.WILD_D4) {
+					return i;
+				}
+			}
+		}
+
+		if (r == Rank.NUMBER) {
+			num = upCard.getNumber(); // Get the upcard's number (if its rank is
+										// number).
+			for (int i = 0; i < hand.size(); i++) {
+				// check if any card in our hand has either the same color or
+				// the same number as the upcard.
+				if (hand.get(i).getNumber() == num
+						|| hand.get(i).getColor() == upCard.getColor()
+						|| hand.get(i).getRank() == Rank.WILD
+						|| hand.get(i).getRank() == Rank.WILD_D4) {
+					return i;
+				}
+			}
+			return -1;
+		}
+		for (int i = 0; i < hand.size(); i++) {
+			// check if any card in our hand has the same coloras the upcard.
+			if (hand.get(i).getRank() == r
+					|| hand.get(i).getColor() == upCard.getColor()
+					|| hand.get(i).getRank() == Rank.WILD
+					|| hand.get(i).getRank() == Rank.WILD_D4) {
+				return i;
+			}
+		}
+
+		return -1;
